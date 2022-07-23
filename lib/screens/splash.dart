@@ -18,7 +18,7 @@ class _SplashState extends State<Splash> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
                   "asset/imageguesser.jpg",
@@ -35,24 +35,24 @@ class _SplashState extends State<Splash> {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     colors: [
-                  Colors.black.withOpacity(0.9),
-                  Colors.black.withOpacity(0.6),
-                  Colors.black.withOpacity(0.4)
-                ])),
+                      Colors.black.withOpacity(0.9),
+                      Colors.black.withOpacity(0.6),
+                      Colors.black.withOpacity(0.4)
+                    ])),
             child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 "Image Guesser",
                 style: GoogleFonts.aldrich(fontSize: 40, color: Colors.white),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
                 "... Lets Enjoy the Game",
                 style: GoogleFonts.aldrich(fontSize: 20, color: Colors.white),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
             ]),
@@ -63,9 +63,16 @@ class _SplashState extends State<Splash> {
               padding: const EdgeInsets.only(bottom: 48.0),
               child: ElevatedButton(
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Color(0xff007B82)),),
-                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Game(),));},
+                  backgroundColor:
+                  MaterialStateProperty.all(const Color(0xff007B82)),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Game(),
+                      ));
+                },
                 child: Text(
                   "Lets Start",
                   style: GoogleFonts.aldrich(fontSize: 20, color: Colors.white),
