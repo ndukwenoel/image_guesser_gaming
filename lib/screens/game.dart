@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,7 +20,7 @@ class _GameState extends State<Game> {
   List<GameModel> ListGameModel = [
     GameModel(
       image: 'asset/bmw.jpg',
-      answerA: 'mercerdis',
+      answerA: 'Mercedes',
       answerB: 'ford',
       answerC: 'bmw',
       answerD: 'tesla',
@@ -34,7 +35,7 @@ class _GameState extends State<Game> {
       correctAnswer: 'cat',
     ),
     GameModel(
-      image: 'asset/imageguesser.jpg',
+      image: 'asset/imageGuesser.jpg',
       answerA: 'phone',
       answerB: 'ford',
       answerC: 'game pad',
@@ -42,12 +43,12 @@ class _GameState extends State<Game> {
       correctAnswer: 'game pad',
     ),
     GameModel(
-      image: 'asset/lambhorgini.jpg',
+      image: 'asset/Lamborghini.jpg',
       answerA: 'lamb',
-      answerB: 'lambhorgini',
-      answerC: 'venza',
+      answerB: 'Lamborghini',
+      answerC: 'Venza',
       answerD: 'f1 runner',
-      correctAnswer: 'lambhorgini',
+      correctAnswer: 'Lamborghini',
     ),
     GameModel(
       image: 'asset/mice.jpg',
@@ -66,15 +67,82 @@ class _GameState extends State<Game> {
       correctAnswer: 'porsche',
     ),
     GameModel(
-      image: 'asset/volkwagen_beetle.jpg',
+      image: 'asset/volkswagen_beetle.jpg',
       answerA: 'bugatti',
       answerB: 'volkswagen beetle',
       answerC: 'hyundai',
       answerD: 'sienna',
       correctAnswer: 'volkswagen beetle',
     ),
-
   ];
+
+  Timer? _timer;
+  int seconds = 0;
+  int minutes = 0;
+  int hours = 0;
+  int counter = 40;
+  late String countdown;
+
+  void startTimer_fortime() {
+    const oneSec = const Duration(seconds: 1);
+
+    _timer = new Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        setState(
+          () {
+            if (seconds < 0) {
+              timer.cancel();
+            } else {
+              seconds = seconds + 1;
+              if (seconds > 59) {
+                minutes += 1;
+                seconds = 0;
+                if (minutes > 59) {
+                  hours += 1;
+                  minutes = 0;
+                }
+              }
+              countdown = "$hours : $minutes : $seconds";
+              print("$seconds : $minutes : $hours");
+            }
+          },
+        );
+      },
+    );
+  }
+
+  void countDown() {
+    //   here lets define our duration of timing
+    Duration _duration = Duration(seconds: 1);
+    //  lets declare our timer
+    _timer = new Timer.periodic(_duration, (timer) {
+      if (counter > 0) {
+        setState(() {
+          counter = counter - 1;
+          countdown = counter.toString();
+        });
+
+        //   counter-=1;
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  initState() {
+    // this is for our hardcoded clock timing
+    // startTimer_fortime();
+    countDown();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +192,11 @@ class _GameState extends State<Game> {
                                 bottomLeft: Radius.circular(10),
                                 topLeft: Radius.circular(10))),
                         child: TextButton(
-                            onPressed: () {controller.previousPage(duration: Duration(seconds: 1), curve: Curves.easeOut);},
+                            onPressed: () {
+                              controller.previousPage(
+                                  duration: const Duration(seconds: 1),
+                                  curve: Curves.easeOut);
+                            },
                             child: Text(
                               "Prev",
                               style: GoogleFonts.aldrich(
@@ -132,6 +204,15 @@ class _GameState extends State<Game> {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
                             ))),
+
+                Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [
+                    Text(" Score : 0  ",textAlign: TextAlign.center,style: GoogleFonts.aldrich(fontSize: 20, fontWeight: FontWeight.bold),),
+
+                    Text("$countdown Secs To Go  ",textAlign: TextAlign.center,style: GoogleFonts.aldrich(fontSize: 20, fontWeight: FontWeight.bold),),
+                  ],
+                )),
 
                 // this container holds the  NEXT button for this page
                 Container(
@@ -144,7 +225,11 @@ class _GameState extends State<Game> {
                             bottomRight: Radius.circular(10),
                             topRight: Radius.circular(10))),
                     child: TextButton(
-                        onPressed: () {controller.nextPage(duration: Duration(seconds: 1), curve: Curves.easeIn);},
+                        onPressed: () {
+                          controller.nextPage(
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.easeIn);
+                        },
                         child: Text(
                           "Next",
                           style: GoogleFonts.aldrich(

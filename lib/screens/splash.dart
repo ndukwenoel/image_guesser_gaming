@@ -21,7 +21,7 @@ class _SplashState extends State<Splash> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  "asset/imageguesser.jpg",
+                  "asset/imageGuesser.jpg",
                 ),
                 fit: BoxFit.cover,
               ),

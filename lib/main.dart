@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:imagegame/screens/splash.dart';
-
+import 'package:provider/provider.dart';
+import 'package:imagegame/provider/gameProvider.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(
+      MultiProvider(
+        providers: [Provider(create: (context) => GameProvider(),)],
+        child: const MyApp() ,)
+  );
 }
 
 class MyApp extends StatelessWidget {

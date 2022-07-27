@@ -12,22 +12,22 @@ class GameScreen extends StatefulWidget {
         required this.image})
       : super(key: key);
 
-  final String? sugestiona;
-  final String? sugestionb;
-  final String? sugestionc;
-  final String? sugestiond;
-  final String? correctAnswer;
-  final String? image;
+        final String? sugestiona;
+        final String? sugestionb;
+        final String? sugestionc;
+        final String? sugestiond;
+        final String? correctAnswer;
+        final String? image;
 
   @override
   State<GameScreen> createState() => _GameScreenState();
 }
 
 class _GameScreenState extends State<GameScreen> {
-  bool answerisA = false,
-      answerisB = false,
-      answerisC = false,
-      answerisD = false;
+  bool answerIsA = false,
+      answerIsB = false,
+      answerIsC = false,
+      answerIsD = false;
   bool isClickedA = false,
       isClickedB = false,
       isClickedC = false,
@@ -44,10 +44,10 @@ class _GameScreenState extends State<GameScreen> {
             SizedBox(
               // the top image art card containing image
               child: Material(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
                 elevation: 20,
                 child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     child: Image.asset(
                       widget.image!,
                       fit: BoxFit.cover,
@@ -89,9 +89,9 @@ class _GameScreenState extends State<GameScreen> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   border: Border.all(color: Colors.black, width: 1),
-                                  color: isClickedA && answerisA
+                                  color: isClickedA && answerIsA
                                       ? Colors.green
-                                      : isClickedA && !answerisA
+                                      : isClickedA && !answerIsA
                                       ? Colors.red
                                       : const Color(0xff9F05C5)),
                               child: TextButton(
@@ -101,25 +101,25 @@ class _GameScreenState extends State<GameScreen> {
                                   });
                                   if (widget.sugestiona == widget.correctAnswer) {
                                     setState(() {
-                                      answerisA = true;
+                                      answerIsA = true;
                                       isClickedA = true;
                                     });
                                   } else if (widget.sugestionb ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisB = true;
+                                      answerIsB = true;
                                       isClickedB = true;
                                     });
                                   }else if (widget.sugestionc ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisC = true;
+                                      answerIsC = true;
                                       isClickedC = true;
                                     });
                                   }else if (widget.sugestiond ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisD = true;
+                                      answerIsD = true;
                                       isClickedD = true;
                                     });
                                   }
@@ -161,9 +161,9 @@ class _GameScreenState extends State<GameScreen> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   border: Border.all(color: Colors.black, width: 1),
-                                  color: isClickedB && answerisB
+                                  color: isClickedB && answerIsB
                                       ? Colors.green
-                                      : isClickedB && !answerisB
+                                      : isClickedB && !answerIsB
                                       ? Colors.red
                                       : const Color(0xff9F05C5)),
                               child: TextButton(
@@ -173,25 +173,25 @@ class _GameScreenState extends State<GameScreen> {
                                   });
                                   if (widget.sugestiona == widget.correctAnswer) {
                                     setState(() {
-                                      answerisA = true;
+                                      answerIsA = true;
                                       isClickedA = true;
                                     });
                                   } else if (widget.sugestionb ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisB = true;
+                                      answerIsB = true;
                                       isClickedB = true;
                                     });
                                   }else if (widget.sugestionc ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisC = true;
+                                      answerIsC = true;
                                       isClickedC = true;
                                     });
                                   }else if (widget.sugestiond ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisD = true;
+                                      answerIsD = true;
                                       isClickedD = true;
                                     });
                                   }
@@ -238,9 +238,9 @@ class _GameScreenState extends State<GameScreen> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   border: Border.all(color: Colors.black, width: 1),
-                                  color: isClickedC && answerisC
+                                  color: isClickedC && answerIsC
                                       ? Colors.green
-                                      : isClickedC && !answerisC
+                                      : isClickedC && !answerIsC
                                       ? Colors.red
                                       : const Color(0xff9F05C5)),
                               child: TextButton(
@@ -250,25 +250,25 @@ class _GameScreenState extends State<GameScreen> {
                                   });
                                   if (widget.sugestiona == widget.correctAnswer) {
                                     setState(() {
-                                      answerisA = true;
+                                      answerIsA = true;
                                       isClickedA = true;
                                     });
                                   } else if (widget.sugestionb ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisB = true;
+                                      answerIsB = true;
                                       isClickedB = true;
                                     });
                                   }else if (widget.sugestionc ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisC = true;
+                                      answerIsC = true;
                                       isClickedC = true;
                                     });
                                   }else if (widget.sugestiond ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisD = true;
+                                      answerIsD = true;
                                       isClickedD = true;
                                     });
                                   }
@@ -314,9 +314,9 @@ class _GameScreenState extends State<GameScreen> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   border: Border.all(color: Colors.black, width: 1),
-                                  color: isClickedD && answerisD
+                                  color: isClickedD && answerIsD
                                       ? Colors.green
-                                      : isClickedD && !answerisD
+                                      : isClickedD && !answerIsD
                                       ? Colors.red
                                       : const Color(0xff9F05C5)),
                               child: TextButton(
@@ -326,25 +326,25 @@ class _GameScreenState extends State<GameScreen> {
                                   });
                                   if (widget.sugestiona == widget.correctAnswer) {
                                     setState(() {
-                                      answerisA = true;
+                                      answerIsA = true;
                                       isClickedA = true;
                                     });
                                   } else if (widget.sugestionb ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisB = true;
+                                      answerIsB = true;
                                       isClickedB = true;
                                     });
                                   }else if (widget.sugestionc ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisC = true;
+                                      answerIsC = true;
                                       isClickedC = true;
                                     });
                                   }else if (widget.sugestiond ==
                                       widget.correctAnswer) {
                                     setState(() {
-                                      answerisD = true;
+                                      answerIsD = true;
                                       isClickedD = true;
                                     });
                                   }
